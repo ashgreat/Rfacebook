@@ -59,12 +59,6 @@ getPost <- function(post, token, n=500, comments=TRUE, likes=TRUE, n.likes=n,
 	if (comments==TRUE){
 		url <- paste0(url, ",comments.summary(true).",
 			"fields(id,from,message,created_time,like_count,comment_count)")
-		if (n.comments>=500){
-			url <- paste0(url, ".limit(500)")
-		}
-		if (n.comments<500){
-			url <- paste0(url, ".limit(", n.comments, ")")
-		}
 	}
 	if (comments==FALSE){
 		url <- paste0(url, ",comments.summary(true)")
@@ -72,12 +66,6 @@ getPost <- function(post, token, n=500, comments=TRUE, likes=TRUE, n.likes=n,
 	if (likes==TRUE){
 		url <- paste0(url, ",likes.summary(true).",
 			"fields(id,name)")
-		if (n.likes>=2000){
-			url <- paste0(url, ".limit(2000)")
-		}
-		if (n.likes<2000){
-			url <- paste0(url, ".limit(", n.likes, ")")
-		}
 	}
 	if (likes==FALSE){
 		url <- paste0(url, ",likes.summary(true)")
